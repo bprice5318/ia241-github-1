@@ -1,0 +1,80 @@
+'''
+Lab11
+'''
+
+url_str = 'https://api.census.gov/data/2016/acs/acs5?get=B01001_001E,NAME&for=county:*&in=state:51&key='+census_api_key # create the url of your census data
+
+response = request.urlopen(url_str) # read the response into computer
+
+html_str = response.read().decode("utf-8") # convert the response into string
+max_p = 0
+max_county = ''
+if (html_str):
+    json_data = json.loads(html_str) # convert the string into json
+    for v1,name,state,county in json_data[1:]:
+        if max_p< int(v1):
+            max_p = int(v1)
+            max_county = name
+    print(max_county, max_p)
+
+#3.1
+
+url_str = 'https://api.census.gov/data/2016/acs/acs5?get=B01001_001E,NAME&for=county:*&in=state:51&key='+census_api_key # create the url of your census data
+
+response = request.urlopen(url_str) # read the response into computer
+
+html_str = response.read().decode("utf-8") # convert the response into string
+max_p = 0
+max_county = ''
+if (html_str):
+    json_data = json.loads(html_str) # convert the string into json
+    for v1,name,state,county in json_data[1:]:
+        if max_p< int(v1):
+            max_p = int(v1)
+            max_county = name
+    print(max_county, max_p)
+
+#3.2
+
+url_str = 'https://api.census.gov/data/2016/acs/acs5?get=B01001_002E,NAME&for=county:*&in=state:51&key='+census_api_key # create the url of your census data
+response = request.urlopen(url_str) # read the response into computer
+html_str = response.read().decode("utf-8") # convert the response into string
+max_p = 0
+max_county = ''
+if (html_str):
+    json_data = json.loads(html_str) # convert the string into json
+    for v1,name,state,county in json_data[1:]:
+        if max_p< int(v1):
+            max_p = int(v1)
+            max_county = name
+    print(max_county, max_p)
+
+#3.3
+
+url_str = 'https://api.census.gov/data/2016/acs/acs5?get=B01001_001E,NAME&for=county:*&in=state:51&key='+census_api_key # create the url of your census data
+
+response = request.urlopen(url_str) # read the response into computer
+
+html_str = response.read().decode("utf-8") # convert the response into string
+max_p = 0
+max_county = ''
+if (html_str):
+    json_data = json.loads(html_str) # convert the string into json
+    for v1,name,state,county in json_data[1:]:
+        if max_p< int(v1):
+            max_p = int(v1)
+            max_county = name
+total = max_p
+
+url_str = 'https://api.census.gov/data/2016/acs/acs5?get=B01001_002E,NAME&for=county:*&in=state:51&key='+census_api_key # create the url of your census data
+response = request.urlopen(url_str) # read the response into computer
+html_str = response.read().decode("utf-8") # convert the response into string
+max_men = 0
+max_county = ''
+if (html_str):
+    json_data = json.loads(html_str) # convert the string into json
+    for v1,name,state,county in json_data[1:]:
+        if max_men< int(v1):
+            max_men = int(v1)
+            max_county = name
+print(max_men, ':', max_p)
