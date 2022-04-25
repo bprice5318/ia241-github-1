@@ -1,0 +1,30 @@
+import pandas
+
+df = pandas.read_excel('s3://ia241-1spring2022-michael/house_price.xls')
+
+df[:10]
+
+df['unit_price']=df['price']/df['area']
+df[:10]
+
+df['house_type'].value_counts()
+
+prc_more_than_2_bath=df.loc[df['bathroom']>2]['price']
+print('avg price of houses more than 2 bathroom is ${}'.format(prc_more_than_2_bath.mean()))
+
+print('mean unit price is ${}'.format(df['unit_price'].mean()))
+
+print('median unit price is ${}'.format(df['unit_price'].median()))
+
+df.groupby('house_type').mean()['price']
+
+from scipy import stats
+
+result = stats.linregress(df['area'],df['price'])
+
+print('slope is {}'.format(result.slope))
+print('intercept is {}'.format(result.intercept))
+print('r square is {}'.format(result.rvalue*result.rvalue))
+print('p value is {}'.format(result.pvalue))
+
+print('price of a house with {}sqft is ${}'.format(2000,2000*result.slope+result.intercept))
